@@ -1,16 +1,22 @@
 {
-  "name": "cypress_training",
-  "version": "1.0.0",
-  "description": "Cypress training",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "cypress open"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/cypress": "^1.1.3",
-    "cypress": "^6.6.0"
-  }
+	"name": "cypress_training",
+	"version": "1.0.0",
+	"description": "Cypress training",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"cypress:open": "cypress open"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/cypress": "^1.1.3",
+		"cypress": "^6.6.0"
+	},
+	"dependencies": {
+		"cypress-cucumber-preprocessor": "^4.0.1"
+	},
+	"cypress-cucumber-preprocessor": {
+		"nonGlobalStepDefinitions": true
+	}
 }
