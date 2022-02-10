@@ -1,31 +1,28 @@
-/// <reference types="cypress" />
-
-// 🐼 Uzyteczne metody:
-// cy.attachFile(FIXTURE_FILE, options) - upload pliku
-// cy.wrap(variable) - wrzuć zwykłą zmienną do cypressa aby wywoływać na niej jego metody
-// .children() - pobierz dzieci
-// .eq(index) - pobierz wartość o danym indexie
-// .should('have.text', text) 
-
-import filePage from "../../page-object/file";
-// 🐼 Dodaj bibliotekę cypress-file-upload i dodaj jej komendę w pliku commands według instrukcji na npm
-// 🐼 Dodaj bibliotekę papaparse aby ułatwić parsowanie i zaimportuj ją
+import filePage from "../../page-objects/files";
+import Papa from "papaparse";
 
 describe("Files", () => {
   beforeEach(() => {
-    /*
-    * Tutaj możesz umieścić wejście na stronę + logowanie
-    */
+    cy.visit("/3/files");
+    cy.login();
   });
 
-   /**
-     Wejdź na stronę /3/files
-     Wrzuć plik "users.csv" (folder fixtures) poprzez drag-n-drop
-     Kliknij przycisk "Podgląd"
-     Spodziewany rezultat: użytkownicy z pliku CSV pokazują się pod przyciskiem w tabelce
-     sparsuj plik z folderu fixtures i sprawdź czy każdy wiersz posiada dobre dane
-     */
-    it('should 1', () => {
-        
-    })
+  it("show uploaded file", () => {
+    filePage
+      .fileUploadInput
+      .attachFile("/files/users.csv", { subjectType: "drag-n-drop" });
+    filePage.filePreviewButton.click();
+
+    cy.readFile("cypress/fixtures/files/users.csv").then((file) => {
+      const { data: users } = Papa.parse(file, { header: true });
+
+      cy.wrap(users).each((user, index) => {
+        cy.get("tbody").children().eq(index).children().as("currentRow");
+        cy.get("@currentRow").eq(0).should("have.text", user.id);
+        cy.get("@currentRow").eq(1).should("have.text", user.firstname);
+        cy.get("@currentRow").eq(2).should("have.text", user.lastname);
+        cy.get("@currentRow").eq(3).should("have.text", user.email);
+      });
+    });
+  });
 });

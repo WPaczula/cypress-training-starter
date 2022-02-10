@@ -1,4 +1,4 @@
-import filePage from "../../page-object/file";
+import filePage from "../../page-objects/files";
 import path from "path";
 import Papa from "papaparse";
 
@@ -9,7 +9,7 @@ describe("Files", () => {
   });
 
   it("should download the cypress image", () => {
-    filePage.downloadButton().click();
+    filePage.downloadButton.click();
 
     const downloadsFolder = Cypress.config("downloadsFolder");
     cy.readFile(path.join(downloadsFolder, "cypress.jpg")).should("exist");

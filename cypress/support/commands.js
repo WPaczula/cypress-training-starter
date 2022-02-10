@@ -1,12 +1,14 @@
 // 🐼 Uzyj tutaj templatki dla nowej komendy
 
-/*
-Cypress.Commands.add('COMMAND_NAME', (...ARGUMENTS) => {
+import loginPage from "../page-objects/login"
+import 'cypress-file-upload';
 
- // BODY OF THE COMMAND
-
+Cypress.Commands.add('login', () => {
+    loginPage.emailInput.type('test@user.com')
+    loginPage.passwordInput.type('Password123')
+    loginPage.loginButton.click()
 })
-*/
+
 
 // wypełnij jej nazwę -> będzie to nazwa metody dodanej do cy
 // jako ciało tej metody wpisz swoje wypełnianie formularza logowania
