@@ -16,5 +16,8 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
     "commonPath": "cypress/integration/4.bdd/common"
+  },
+  "dependencies": {
+    "papaparse": "^5.3.1"
   }
 }

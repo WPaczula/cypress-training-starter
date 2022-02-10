@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { Given, When, Then, Before, After } from "cypress-cucumber-preprocessor/steps";
+import { Given, When, Before, After } from "cypress-cucumber-preprocessor/steps";
 
 Given('My step with {string} parameter', (stringVariable), () => {
     // W ten sposób możemy zadeklaorwać, że parametr jest liczbą
@@ -9,8 +9,16 @@ Given('My step with {string} parameter', (stringVariable), () => {
 When('If a table is declared we will get it here ->', (table) => {
     // Żeby dostać obiekty wierszy o propertiesach z nazwami kolumn należy wykonać
     table.hashes()
+    // [
+    //     { id: 'id1', name: 'Wojtek'},
+    //     { id: 'id2', name: 'Jan'},
+    // ]
     // Aby operować na czystych danych bez nagłówka
     table.rows()
+    // [
+    //     ['id1', 'Wojtek'],
+    //     ['id2', 'Jan']
+    // ]
 })
 
 // Możemy również wykorzystywać odpowiednik beforeEach i afterEach

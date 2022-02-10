@@ -1,4 +1,6 @@
-import filePage from '../../page-objects/files';
+import filePage from "../../page-object/file";
+import path from "path";
+import Papa from "papaparse";
 
 describe("Files", () => {
   beforeEach(() => {
@@ -7,14 +9,24 @@ describe("Files", () => {
   });
 
   it("should download the cypress image", () => {
-    // 🐼 Kliknij w link z pobraniem pliku
     filePage.downloadButton().click();
 
-    // 🐼 pobierz folder z downloadem i sprawdź czy dany plik tam jest
-    // Cypress.config("downloadsFolder") zwraca ścieżkę do folderu "downloads"
+    const downloadsFolder = Cypress.config("downloadsFolder");
+    cy.readFile(path.join(downloadsFolder, "cypress.jpg")).should("exist");
   });
 
-  it("should read the fixture file", () => {
-    // 🐼 Ten test tylko parsuje plik fixture i sprawdza czy wiersze są zdefiniowane
+  it("should read the file", () => {
+    cy.readFile("./cypress/fixtures/files/users.csv").then((file) => {
+      const { data: users } = Papa.parse(file, { header: true });
+      expect(users).to.have.length(5);
+
+      cy.wrap(users).each((user) => {
+        cy.wrap(user).as("user");
+        cy.get("@user").its("id").should("not.be.undefined");
+        cy.get("@user").its("firstname").should("not.be.undefined");
+        cy.get("@user").its("lastname").should("not.be.undefined");
+        cy.get("@user").its("email").should("not.be.undefined");
+      });
+    });
   });
 });
