@@ -10,6 +10,8 @@
 
 describe('Greeting form', () => {
     beforeEach(() => {
+        cy.visit('/1/simple-test')
+        cy.login()
         /*
          * Go to your page and invoke log in command 
          */
@@ -23,7 +25,7 @@ describe('Greeting form', () => {
         Expected result: a toast with a message is shown: "Hi Jan! I'm happy you sent the form!"
     */
     it('should 1...', () => {
-        
+        // cy.login()
     })
     
     /*

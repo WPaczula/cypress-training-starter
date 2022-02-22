@@ -8,7 +8,7 @@ describe('Login', () => {
         cy.visit(loginPage.url)
 
         // 🐼 Click the register link
-        loginPage.registerLink
+        loginPage.registerLink.click()
 
         cy.location('pathname').should('be.equal', '/register')
     })
@@ -19,7 +19,7 @@ describe('Login', () => {
         cy.visit(loginPage.url)
 
         // 🐼 password variable needs to be typed into this input
-        loginPage.passwordInput
+        loginPage.passwordInput.type(password)
         loginPage.showPasswordButton.click()
 
         loginPage.passwordInput.should('have.value', password)
@@ -32,6 +32,9 @@ describe('Login', () => {
 
         // 🐼 fill the form and click log in
         // register your user manually before that
+        loginPage.emailInput.type('YOUR_EMAIL')
+        loginPage.passwordInput.type('YOUR_PASSWORD')
+        loginPage.submitButton.click()
         
         cy.location('pathname').should('be.equal', '/');
     })

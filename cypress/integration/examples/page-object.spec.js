@@ -30,8 +30,9 @@ describe('To page object or not to page object', () => {
         emailErrorMessage() { 
             return this.emailInput()
                 .next() 
-        } 
+        }
     }
+    
     it('should be slightly better', () => {
         loginPage.emailInput().type('not an email')
 

@@ -1,9 +1,11 @@
 // 🐼 Add your log in command
 
-Cypress.Commands.add('YOUR_COMMAND_NAME', () => {
-// 🐼 Fill the inputs and click log in
-// the login mechanism will automatically redirect you
-// back to the page you wanted to visit
+import loginPage from "../page-objects/login"
+
+Cypress.Commands.add('login', () => {
+    loginPage.emailInput.type('test@user.com')
+    loginPage.passwordInput.type('Password123')
+    loginPage.submitButton.click()
 })
 
 // The name should be "login" - all methods start with a small letter in cypress

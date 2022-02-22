@@ -18,7 +18,7 @@ cy.get('[type="select"]').select('Option 1');   // choose Option 1 from select c
 // how the application behaves when an error is thrown
 // IMPORTANT - intercept has to be called at the top before some interactions are made 
 
-cy.intercept("GET", "http://my-api.com/things").as("request");
+cy.intercept("GET", "/things").as("request");
 cy.wait("@request");
 
 // 🐼 To mock a response from the server we can specify fixture/body and status code like this:
