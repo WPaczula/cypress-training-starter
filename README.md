@@ -10,6 +10,12 @@ Steps to set things up on your own:
 4. Run `0.login.spec.js`
 5. Happy coding! 😄
 
-## Branches
+## BDD
 
-On this repo you can find TS and BDD branches which explain how you can integrate those tools into cypress
+This branch contains BDD support in e2e/4.bdd folder. To enable BDD go to `cypress.config.json` and uncomment line 10.
+
+How to set up BDD:
+1. Install BDD plugin. It is different for v10 than for previous versions: `npm i @badeball/cypress-cucumber-preprocessor`
+2. Install bundler preprocessor: `npm i @bahmutov/cypress-esbuild-preprocessor`
+3. Update `cypress.config.js` - add plugins and define new steps definition file extention: `*.feature`
+4. Add `.cypress-cucumber-preprocessorrc.json` file and define your steps. In my case I wanted all BDD tests to be in `4.bdd` folder. If you don't need that feel free to ommit `4.bdd` in the paths. 
