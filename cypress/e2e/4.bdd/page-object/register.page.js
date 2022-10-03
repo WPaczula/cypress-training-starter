@@ -1,15 +1,15 @@
 const registerPage = {
     url: '/register',
-	get emailInput() {
+	emailInput() {
 		return cy.get('[name="email"]')
 	},
-	get passwordInput() {
+	passwordInput() {
 		return cy.get('[name="password"]')
 	},
-    get confirmPasswordInput() {
+    confirmPasswordInput() {
 		return cy.get('[name="confirmPassword"]')
 	},
-	get submitButton() {
+	submitButton() {
 		return cy.get('[type="submit"]')
 	},
     alert(message) {

@@ -9,16 +9,16 @@ After({tags: '@require-init'}, () => {
 })
 
 When('I provide correct credentials', () => {
-    loginPage.emailInput.type('test@user.com')
-    loginPage.passwordInput.type('Password123')
-    loginPage.loginButton.click()
+    loginPage.emailInput().type('test@user.com')
+    loginPage.passwordInput().type('Password123')
+    loginPage.loginButton().click()
 })
 
 When('I provide incorrect credentials', (dataTable) => {
     const user = dataTable.hashes()[0]
-    loginPage.emailInput.type(user.username)
-    loginPage.passwordInput.type(user.password)
-    loginPage.loginButton.click()
+    loginPage.emailInput().type(user.username)
+    loginPage.passwordInput().type(user.password)
+    loginPage.loginButton().click()
 })
 
 Then('I should see {string} error message', (errorMessage) => {

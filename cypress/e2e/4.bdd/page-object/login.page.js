@@ -1,12 +1,12 @@
 const loginPage = {
     url: '/login',
-	get emailInput() {
+	emailInput() {
 		return cy.get('[name="email"]')
 	},
-	get passwordInput() {
+	passwordInput() {
 		return cy.get('[name="password"]')
 	},
-	get loginButton() {
+	loginButton() {
 		return cy.contains('[type="submit"]', 'Log in')
 	},
     alert(message) {
