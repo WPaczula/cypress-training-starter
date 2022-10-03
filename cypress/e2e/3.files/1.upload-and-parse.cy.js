@@ -7,7 +7,7 @@
 // .eq(index) - pobierz wartość o danym indexie
 // .should('have.text', text) 
 
-import filePage from "../../page-object/file";
+import filePage from '../../page-objects/files';
 // 🐼 Dodaj bibliotekę cypress-file-upload i dodaj jej komendę w pliku commands według instrukcji na npm
 // 🐼 Dodaj bibliotekę papaparse aby ułatwić parsowanie i zaimportuj ją
 
