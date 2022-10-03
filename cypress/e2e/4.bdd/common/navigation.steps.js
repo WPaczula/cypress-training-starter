@@ -6,7 +6,7 @@ import registerPage from '../page-object/register.page'
 const navigationDictionary = {
     home: homePage.url,
     login: loginPage.url,
-    registerPage: registerPage.url
+    register: registerPage.url
 }
 
 Given('I am on the {string} page', (nameOfThePage) => {

@@ -3,7 +3,7 @@ Feature: User login
     I want to be able to log in
     To be able to use the application
 
-    @require-init
+    @focus
     Scenario: Login with correct credentials
         Given I am on the "login" page
         When I provide correct credentials
