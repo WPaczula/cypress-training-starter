@@ -1,0 +1,7 @@
+{
+    "stepDefinitions": [
+      "cypress/e2e/4.bdd/[filepath]/**/*.{js,ts}",
+      "cypress/e2e/4.bdd/[filepath].{js,ts}",
+      "cypress/e2e/4.bdd/common/**/*.{js,ts}"
+    ]
+  }
